@@ -76,14 +76,6 @@ public class CourseRollTest {
 		} catch(IllegalArgumentException e) {
 			assertNull(e.getMessage());
 		}
-		
-		try {
-			Student student = new Student("Stephen", "Welsh", "sdwelsh", "sdwelsh@ncsu.edu", "password");
-			courseRoll.enroll(student);
-			fail();
-		} catch(IllegalArgumentException e) {
-			assertNull(e.getMessage());
-		}
 	}
 	
 	/**
@@ -169,7 +161,10 @@ public class CourseRollTest {
 		assertEquals(0, courseRoll.getOpenSeats());
 		
 		Student student = new Student("Stephen", "Welsh", "sdwelsh", "sdwelsh@ncsu.edu", "password");
-		assertFalse(courseRoll.canEnroll(student));
+		assertTrue(courseRoll.canEnroll(student));
+		
+		courseRoll.enroll(student);
+		assertEquals(1, courseRoll.getNumberOnWaitlist());
 		
 		courseRoll.setEnrollmentCap(20);
 		assertEquals(20, courseRoll.getEnrollmentCap());
