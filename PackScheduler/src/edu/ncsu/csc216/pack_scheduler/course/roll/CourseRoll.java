@@ -3,8 +3,10 @@
  */
 package edu.ncsu.csc216.pack_scheduler.course.roll;
 
+import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.util.LinkedAbstractList;
+import edu.ncsu.csc216.pack_scheduler.util.LinkedQueue;
 
 /**
  * Creates a Roll for each course to make sure that each student enrolled in the course is accounted for
@@ -23,18 +25,22 @@ public class CourseRoll {
 	/** Defines the maximum capacity of students that can be enrolled in the course */
 	private static final int MAX_CAPACITY = 250;
 	
+	/** Creates a new queue of students waiting to get into a class */
+	private LinkedQueue<Student> waitlist;
+	
 	/**
 	 * Creates the constructor for the CourseRoll making a new linked list and setting the 
 	 * enrollment capacity of the current linked list.
 	 * @param enrollmentCap the capacity of the course for student to enroll in
+	 * @param course the course that is being used for roll
 	 */
-	public CourseRoll(int enrollmentCap) {
+	public CourseRoll(int enrollmentCap, Course course) {
 		if(enrollmentCap < MIN_CAPACITY || enrollmentCap > MAX_CAPACITY) {
 			throw new IllegalArgumentException();
 		}
 		this.enrollmentCap = enrollmentCap;
 		roll = new LinkedAbstractList<Student>(this.enrollmentCap);
-		
+		waitlist = new LinkedQueue<Student>(10);
 	}
 	
 	/**
@@ -90,8 +96,13 @@ public class CourseRoll {
 			}
 			else if(!canEnroll(student)) {
 				throw new IllegalArgumentException();
+			} else if(waitlist.size() == 10) {
+				throw new IllegalArgumentException();
+			} else if(getOpenSeats() == 0) {
+				waitlist.enqueue(student);
+			} else {
+				roll.add(student);
 			}
-			roll.add(student);
 		} catch(Exception e) {
 			throw new IllegalArgumentException();
 		}
@@ -106,8 +117,17 @@ public class CourseRoll {
 		try {
 			if(s == null) {
 				throw new IllegalArgumentException();
+			} 
+			
+			if(getOpenSeats() == 0) {
+				roll.remove(s);
+				if(waitlist.size() > 0) {
+					roll.add(waitlist.dequeue());
+				}
+			} else {
+				roll.remove(s);
 			}
-			roll.remove(s);
+			
 		} catch(Exception e) {
 			throw new IllegalArgumentException();
 		}
@@ -121,8 +141,10 @@ public class CourseRoll {
 	 * 		   false if the student can't enroll
 	 */
 	public boolean canEnroll(Student s) {
-		if(getOpenSeats() <= 0) {
+		if(getOpenSeats() <= 0 && waitlist.size() <= 10) {
 			return false;
+		}else if(waitlist.size() > 0) {
+			return true;
 		}
 		for(int i = 0; i < roll.size(); i++) {
 			if(roll.get(i).getId().equals(s.getId())) {
