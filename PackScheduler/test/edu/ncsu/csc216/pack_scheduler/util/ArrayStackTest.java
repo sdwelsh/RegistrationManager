@@ -10,6 +10,7 @@ import java.util.EmptyStackException;
 import org.junit.Test;
 
 /**
+ * Test the Array Stack Class
  * @author kraig
  *
  */

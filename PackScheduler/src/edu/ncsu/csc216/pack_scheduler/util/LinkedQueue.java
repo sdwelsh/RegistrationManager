@@ -6,6 +6,7 @@ package edu.ncsu.csc216.pack_scheduler.util;
 import java.util.NoSuchElementException;
 
 /**
+ * This is a queue that uses the linkedAbstractList as the base
  * @author stephenwelsh
  *
  * @param <E> generic parameter

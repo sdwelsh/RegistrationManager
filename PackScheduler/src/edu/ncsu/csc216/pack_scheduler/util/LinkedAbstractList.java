@@ -204,7 +204,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				current = current.next;
 			}
 			tmp = current.next.data;
-			current.next = current.next.next;
+			current = current.next.next;
 		}
 		size--;
 		return tmp;

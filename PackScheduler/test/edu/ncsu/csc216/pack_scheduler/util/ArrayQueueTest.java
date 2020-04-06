@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 import org.junit.Test;
 
 /**
+ * Test the ArrayQueue Class
  * @author stephenwelsh
  *
  */

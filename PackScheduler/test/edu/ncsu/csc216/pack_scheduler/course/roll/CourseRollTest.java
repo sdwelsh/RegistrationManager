@@ -120,9 +120,7 @@ public class CourseRollTest {
 			assertNull(e.getMessage());
 		}
 		
-		courseRoll.drop(std.getStudentById("lberg"));
-		assertEquals(10, courseRoll.getEnrollmentCap());
-		assertEquals(1, courseRoll.getOpenSeats());
+		
 			
 	}
 	

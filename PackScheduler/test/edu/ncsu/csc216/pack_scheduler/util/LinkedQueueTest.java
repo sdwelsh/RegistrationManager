@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 import org.junit.Test;
 
 /**
+ * Test linked Queue class
  * @author stephenwelsh
  *
  */
