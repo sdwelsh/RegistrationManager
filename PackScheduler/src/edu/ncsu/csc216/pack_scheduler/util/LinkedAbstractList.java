@@ -2,10 +2,12 @@
  * 
  */
 package edu.ncsu.csc216.pack_scheduler.util;
+
 import java.util.AbstractList;
 
 /**
  * LinkedAbstractList class that could hold courses
+ * 
  * @author Jeff Li
  * @param <E>
  */
@@ -19,7 +21,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	private int size;
 	/** max students able to enroll in course */
 	private int capacity;
-	
+
 	/**
 	 * Constructor for LinkedAbstractList
 	 * 
@@ -35,7 +37,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		this.capacity = capacity;
 
 	}
-	
+
 	/**
 	 * ListNode class
 	 * 
@@ -55,7 +57,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			this.next = next;
 		}
 	}
-	
+
 	/**
 	 * Changes the capacity of the list
 	 * 
@@ -67,7 +69,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		}
 		this.capacity = capacity;
 	}
-	
+
 	/**
 	 * Gets the object with the given index
 	 * 
@@ -87,17 +89,16 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		}
 		return tmp.data;
 	}
-	
+
 	/**
 	 * Sets the object at the given index to a given value
 	 * 
-	 * @param idx the index of the object being modified
+	 * @param idx   the index of the object being modified
 	 * @param value the new value for the object
 	 * @return the old object
 	 */
 	@Override
 	public E set(int idx, E value) {
-	
 
 		if (value == null) {
 			throw new NullPointerException("Element added is null");
@@ -122,11 +123,11 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		return tmp;
 
 	}
-	
+
 	/**
 	 * Adds an object to the list. Null and duplicate objects cannot be added
 	 * 
-	 * @param idx the index that the object is being added to
+	 * @param idx   the index that the object is being added to
 	 * @param value the object being added
 	 */
 	@Override
@@ -158,10 +159,10 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			if (idx == 0) {
 				ListNode tmp = new ListNode(value, front);
 				front = tmp;
-			} else if (idx == size){
+			} else if (idx == size) {
 				back.next = new ListNode(value, null);
 				back = back.next;
-				
+
 			} else {
 				current = front;
 				for (int i = 0; i < idx - 1; i++) {
@@ -177,7 +178,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		}
 		size++;
 	}
-	
+
 	/**
 	 * Removes an object from the list
 	 * 
@@ -187,7 +188,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	@Override
 	public E remove(int idx) {
 		E tmp;
-		
+
 		if (idx < 0 || idx >= size()) {
 			throw new IndexOutOfBoundsException("Index out of bounds");
 		}
@@ -198,18 +199,18 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		} else if (idx == 0) {
 			tmp = front.data;
 			front = front.next;
-		} else{
+		} else {
 			ListNode current = front;
 			for (int i = 0; i < idx - 1; i++) {
 				current = current.next;
 			}
 			tmp = current.next.data;
-			current = current.next.next;
+			current.next = current.next.next;
 		}
 		size--;
 		return tmp;
 	}
-	
+
 	/**
 	 * Gets the number of objects in the list
 	 * 

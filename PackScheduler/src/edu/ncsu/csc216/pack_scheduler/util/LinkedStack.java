@@ -9,6 +9,7 @@ import java.util.EmptyStackException;
  * A linked stack that uses a linked list as the base
  * @author kraig
  *
+ * @param <E> the generic parameter
  */
 public class LinkedStack<E> implements Stack<E> {
 	/**
