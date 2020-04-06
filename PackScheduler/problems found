@@ -1,0 +1,5 @@
+Problems found while debugging.
+getCurrentUser method is empty
+Course catalog and student directory are never created
+current user is never used
+Logout sets user to registar instead of setting it to null.

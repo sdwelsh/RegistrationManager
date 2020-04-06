@@ -1,0 +1,2 @@
+CSC116,Intro to Computer Science- Java,002,3,sheckman,10,MWF,1100,1300
+CSC216,Programming Concepts- Java,005,4,sesmith5,10,TH,1330,1420
