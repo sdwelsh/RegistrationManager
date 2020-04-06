@@ -196,7 +196,7 @@ public class LinkedAbstractListTest {
         // check size
         assertEquals(1, a.size());
         
-        test = a.remove(a.size()-1);
+        test = a.remove(a.size() - 1);
         assertEquals("b", test);
 
         try {
