@@ -31,6 +31,9 @@ public class CourseRoll {
 
 	/** Creates a new queue of students waiting to get into a class */
 	private LinkedQueue<Student> waitlist;
+	
+	/** Creates a course for this roll */
+	private Course thisCourse;
 
 	/**
 	 * Creates the constructor for the CourseRoll making a new linked list and
@@ -44,6 +47,7 @@ public class CourseRoll {
 			throw new IllegalArgumentException();
 		}
 		this.enrollmentCap = enrollmentCap;
+		thisCourse = course;
 		roll = new LinkedAbstractList<Student>(this.enrollmentCap);
 		waitlist = new LinkedQueue<Student>(10);
 	}
@@ -65,8 +69,8 @@ public class CourseRoll {
 			throw new IllegalArgumentException();
 		}
 		try {
-			// roll.setCapacity(enrollmentCap);
 			this.enrollmentCap = enrollmentCap;
+			roll.setCapacity(getEnrollmentCap());
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
@@ -136,6 +140,7 @@ public class CourseRoll {
 				roll.remove(s);
 				if (waitlist.size() > 0) {
 					roll.add(waitlist.dequeue());
+					s.getSchedule().addCourseToSchedule(thisCourse);
 				}
 			} else {
 				roll.remove(s);
