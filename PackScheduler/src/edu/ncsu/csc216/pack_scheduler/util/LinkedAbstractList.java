@@ -204,7 +204,11 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			for (int i = 0; i < idx - 1; i++) {
 				current = current.next;
 			}
-			tmp = current.next.data;
+			if(idx != size - 1) {
+				tmp = current.next.data;
+			} else {
+				tmp = back.data;
+			}
 			current.next = current.next.next;
 		}
 		size--;
