@@ -138,33 +138,26 @@ public class CourseRoll {
 				throw new IllegalArgumentException();
 			}
 
-			if (getOpenSeats() == 0) {
-				
-				int idx = 0;
-				for(int i = 0; i < roll.size(); i++) {
-					if(s.equals(roll.get(i))) {
-						idx = i;
-					}
+			int idx = -1;
+			for(int i = 0; i < roll.size(); i++) {
+				if(s.equals(roll.get(i))) {
+					idx = i;
 				}
-				
-				roll.remove(idx);
-				
-				if (waitlist.size() > 0) {
-					Student add = waitlist.dequeue();
-					roll.add(add);
-					add.getSchedule().addCourseToSchedule(thisCourse);
-				}
-			} else {
-				int idx = 0;
-				for(int i = 0; i < roll.size(); i++) {
-					if(s.equals(roll.get(i))) {
-						idx = i;
-					}
-				}
-				
-				roll.remove(idx);
 			}
-
+			
+			if(idx != -1) {
+				if (getOpenSeats() == 0) {
+					roll.remove(idx);
+					
+					if (waitlist.size() > 0) {
+						Student add = waitlist.dequeue();
+						roll.add(add);
+						add.getSchedule().addCourseToSchedule(thisCourse);
+					}
+				} else {
+					roll.remove(idx);
+				}
+			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
