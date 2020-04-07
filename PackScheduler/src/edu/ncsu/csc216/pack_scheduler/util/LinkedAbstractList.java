@@ -213,6 +213,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				back = current;
 			}
 		}
+		
 		size--;
 		return tmp;
 	}

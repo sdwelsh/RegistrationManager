@@ -149,7 +149,7 @@ public class CourseRoll {
 				if (getOpenSeats() == 0) {
 					roll.remove(idx);
 					
-					if (waitlist.size() > 0) {
+					if (getNumberOnWaitlist() > 0) {
 						Student add = waitlist.dequeue();
 						roll.add(add);
 						add.getSchedule().addCourseToSchedule(thisCourse);
@@ -190,7 +190,7 @@ public class CourseRoll {
 	 * @return number of students on the wait list
 	 */
 	public int getNumberOnWaitlist() {
-		return waitlist.size();
+		return this.waitlist.size();
 	}
 
 }
