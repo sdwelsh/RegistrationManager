@@ -69,6 +69,34 @@ public class CourseRollTest {
 			assertNull(e.getMessage());
 		}
 		
+		Student s = new Student("stephen", "welsh", "sdwelsh", "sdwelsh@gmail.com", " uh");
+		Student s1 = new Student("stephen", "welsh", "stwelsh", "sdwelsh@gmail.com", " uh");
+		Student s2 = new Student("stephen", "welsh", "sttwelsh", "sdwelsh@gmail.com", " uh");
+		Student s3 = new Student("stephen", "welsh", "stttwelsh", "sdwelsh@gmail.com", " uh");
+		Student s4 = new Student("stephen", "welsh", "stttttwelsh", "sdwelsh@gmail.com", " uh");
+		Student s5 = new Student("stephen", "welsh", "sttttttwelsh", "sdwelsh@gmail.com", " uh");
+		Student s6 = new Student("stephen", "welsh", "swelsh", "sdwelsh@gmail.com", " uh");
+		Student s7 = new Student("stephen", "welsh", "welsh", "sdwelsh@gmail.com", " uh");
+		Student s8 = new Student("stephen", "welsh", "elsh", "sdwelsh@gmail.com", " uh");
+		Student s9 = new Student("stephen", "welsh", "lsh", "sdwelsh@gmail.com", " uh");
+		courseRoll.enroll(s);
+		courseRoll.enroll(s1);
+		courseRoll.enroll(s2);
+		courseRoll.enroll(s3);
+		courseRoll.enroll(s4);
+		courseRoll.enroll(s5);
+		courseRoll.enroll(s6);
+		courseRoll.enroll(s7);
+		courseRoll.enroll(s8);
+		courseRoll.enroll(s9);
+		assertEquals(10, courseRoll.getNumberOnWaitlist());
+		
+		courseRoll.drop(std.getStudentById("lberg"));
+		assertEquals(0, courseRoll.getOpenSeats());
+		assertEquals(9, courseRoll.getNumberOnWaitlist());
+		
+		
+		
 		try {
 			Student student = null;
 			courseRoll.enroll(student);

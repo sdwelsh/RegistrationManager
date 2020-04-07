@@ -157,7 +157,15 @@ public class CourseRoll {
 				} else {
 					roll.remove(idx);
 				}
-			} 
+			} else {
+				int waitsize = waitlist.size();
+				for(int i = 0; i < waitsize; i++) {
+					Student dequeue = waitlist.dequeue();
+					if(!dequeue.getId().equals(s.getId())){
+						waitlist.enqueue(dequeue);
+					}
+				}
+			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
