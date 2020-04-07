@@ -70,7 +70,9 @@ public class CourseRoll {
 		}
 		try {
 			this.enrollmentCap = enrollmentCap;
-			roll.setCapacity(getEnrollmentCap());
+			if(roll != null) {
+				roll.setCapacity(enrollmentCap);
+			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
