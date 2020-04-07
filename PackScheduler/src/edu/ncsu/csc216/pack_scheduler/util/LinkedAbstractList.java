@@ -206,10 +206,12 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			}
 			if(idx != size - 1) {
 				tmp = current.next.data;
+				current.next = current.next.next;
 			} else {
 				tmp = back.data;
+				current.next = current.next.next;
+				back = current;
 			}
-			current.next = current.next.next;
 		}
 		size--;
 		return tmp;
