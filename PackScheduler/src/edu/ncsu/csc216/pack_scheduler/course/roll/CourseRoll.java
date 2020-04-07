@@ -157,7 +157,7 @@ public class CourseRoll {
 				} else {
 					roll.remove(idx);
 				}
-			}
+			} 
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
