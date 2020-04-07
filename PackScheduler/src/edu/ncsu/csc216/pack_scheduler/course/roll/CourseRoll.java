@@ -139,8 +139,9 @@ public class CourseRoll {
 			if (getOpenSeats() == 0) {
 				roll.remove(s);
 				if (waitlist.size() > 0) {
-					roll.add(waitlist.dequeue());
-					s.getSchedule().addCourseToSchedule(thisCourse);
+					Student add = waitlist.dequeue();
+					roll.add(add);
+					add.getSchedule().addCourseToSchedule(thisCourse);
 				}
 			} else {
 				roll.remove(s);
