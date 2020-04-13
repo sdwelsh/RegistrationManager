@@ -222,7 +222,10 @@ public class LinkedListTest {
 		}
 	}
 	
-	@Test
+	/**
+	 * Test the iterator for coverage
+	 */
+	@Test 
 	public void testIterator() {
 		LinkedList<String> arrayList = new LinkedList<String>();
 		assertEquals(0, arrayList.size());
