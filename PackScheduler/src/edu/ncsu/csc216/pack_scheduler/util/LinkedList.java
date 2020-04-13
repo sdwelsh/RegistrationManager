@@ -179,15 +179,15 @@ public class LinkedList<E> extends AbstractSequentialList<E>{
 		 */
 		@Override
 		public E next() {
-			if(next.data == null) {
+			if(!hasNext()) {
 				throw new NoSuchElementException();
 			}
 			
 			ListNode current = next;
 			next = next.next;
 			previous = current;
-			nextIndex ++;
-			previousIndex ++;
+			nextIndex++;
+			previousIndex++;
 			lastRetrieved = current;
 			
 			return current.data;
@@ -219,8 +219,8 @@ public class LinkedList<E> extends AbstractSequentialList<E>{
 			ListNode current = previous;
 			next = previous;
 			previous = previous.prev;
-			nextIndex --;
-			previousIndex --;
+			nextIndex--;
+			previousIndex--;
 			lastRetrieved = current;
 			
 			return current.data;
@@ -232,7 +232,6 @@ public class LinkedList<E> extends AbstractSequentialList<E>{
 		 */
 		@Override
 		public int nextIndex() {
-			lastRetrieved = null;
 			return nextIndex;
 		}
 
@@ -242,7 +241,6 @@ public class LinkedList<E> extends AbstractSequentialList<E>{
 		 */
 		@Override
 		public int previousIndex() {
-			lastRetrieved = null;
 			return previousIndex;
 		}
 

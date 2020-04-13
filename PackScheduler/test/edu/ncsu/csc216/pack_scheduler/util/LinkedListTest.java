@@ -5,6 +5,8 @@ package edu.ncsu.csc216.pack_scheduler.util;
 
 import static org.junit.Assert.*;
 
+import java.util.ListIterator;
+
 import org.junit.Test;
 
 /**
@@ -218,6 +220,20 @@ public class LinkedListTest {
 		} catch(IndexOutOfBoundsException e) {
 			assertEquals("Index: 0", e.getMessage());
 		}
+	}
+	
+	@Test
+	public void testIterator() {
+		LinkedList<String> arrayList = new LinkedList<String>();
+		assertEquals(0, arrayList.size());
+		arrayList.add(0, "bananas");
+		arrayList.add(1, "apples");
+		assertEquals(2, arrayList.size());
+		arrayList.add(2, "grapes");
+		arrayList.add(3, "blueberrys");
+		ListIterator<String> iterator = arrayList.listIterator(2);
+		
+		assertEquals("apples", iterator.previous());
 	}
 
 }
