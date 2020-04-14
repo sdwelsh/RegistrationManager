@@ -62,20 +62,6 @@ public class StudentDirectoryTest {
 		assertFalse(sd.removeStudent("sesmith5"));
 		assertEquals(0, sd.getStudentDirectory().length);
 	}
-	
-	/**
-	 * Tests invalid file
-	 */
-	@Test
-	public void testLoadStudentsFromInvalidFile() {
-		StudentDirectory sd = new StudentDirectory();
-		try {
-			sd.loadStudentsFromFile(invalidTestFile);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals("Unable to read file test-files/nosuchfile.txt", e.getMessage());
-		}
-	}
 
 	/** 
 	 * Tests StudentDirectory.testNewStudentDirectory(). 

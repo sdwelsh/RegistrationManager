@@ -1,6 +1,5 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
-import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
 
 /**

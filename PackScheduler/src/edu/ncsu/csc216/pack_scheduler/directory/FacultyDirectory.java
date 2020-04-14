@@ -161,4 +161,19 @@ public class FacultyDirectory {
 			throw new IllegalArgumentException("Unable to write to file " + fileName);
 		}
 	}
+	
+	/**
+	 * Gets the faculty member with the associated Id
+	 * @param id the id of the faculty member
+	 * @return the facuilty member
+	 */
+	public Faculty getFacultyById(String id) {
+		for(int i = 0; i < facultyDirectory.size(); i++) {
+			String currentId = facultyDirectory.get(i).getId();
+			if(currentId.equals(id)) {
+				return facultyDirectory.get(i);
+			}
+		}
+		return null;
+	}
 }

@@ -2,7 +2,6 @@ package edu.ncsu.csc216.pack_scheduler.io;
 
 import java.util.*;
 import java.io.*;
-
 import edu.ncsu.csc216.pack_scheduler.util.LinkedList;
 import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 
@@ -24,9 +23,9 @@ public class FacultyRecordIO {
 	 * @throws FileNotFoundException When file isn't find
 	 * @return studentRecords the student records data
 	 */
-	public static edu.ncsu.csc216.pack_scheduler.util.LinkedList<Faculty> readFacultyRecords(String fileName) throws FileNotFoundException {
+	public static LinkedList<Faculty> readFacultyRecords(String fileName) throws FileNotFoundException {
 		Scanner fileReader = new Scanner(new FileInputStream(fileName));
-		edu.ncsu.csc216.pack_scheduler.util.LinkedList<Faculty> facultyRecords = new edu.ncsu.csc216.pack_scheduler.util.LinkedList<Faculty>();
+		LinkedList<Faculty> facultyRecords = new LinkedList<Faculty>();
 		while (fileReader.hasNextLine()) {
 			try {
 				String fileLines = fileReader.nextLine();
@@ -97,7 +96,7 @@ public class FacultyRecordIO {
 	 * @param facultyDirectory the arrayList contains all faculty directory
 	 * @throws IOException when File can not be write to
 	 */
-	public static void writeFacultyRecords(String fileName, edu.ncsu.csc216.pack_scheduler.util.LinkedList<Faculty> facultyDirectory) throws IOException {
+	public static void writeFacultyRecords(String fileName, LinkedList<Faculty> facultyDirectory) throws IOException {
 		// TODO Auto-generated method stub
 		PrintStream fileWriter = new PrintStream(new File(fileName));
 		for (int i = 0; i < facultyDirectory.size(); i++) {

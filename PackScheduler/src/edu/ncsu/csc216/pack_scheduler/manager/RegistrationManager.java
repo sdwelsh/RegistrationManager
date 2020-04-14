@@ -10,7 +10,9 @@ import java.util.Properties;
 import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.course.roll.CourseRoll;
+import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
+import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
@@ -35,12 +37,15 @@ public class RegistrationManager {
 	private static final String HASH_ALGORITHM = "SHA-256";
 	/** sets PROP_FILE to the registrar.properties file */
 	private static final String PROP_FILE = "registrar.properties";
+	/** Creates a new private faculty directory for the registration manager */
+	private FacultyDirectory facultyDirectory;
 	/** calls the createRegistrar method that creates the Registration Manager Object*/
 	private RegistrationManager() {
 		createRegistrar();
 		currentUser = getCurrentUser();
 		courseCatalog = new CourseCatalog();
 		studentDirectory = new StudentDirectory();
+		facultyDirectory = new FacultyDirectory();
 	}
 	
 	/**
@@ -104,6 +109,14 @@ public class RegistrationManager {
 	public StudentDirectory getStudentDirectory() {
 		return studentDirectory; 
 	}
+	
+	/**
+	 * Returns a new faculty directory
+	 * @return the faculty directory
+	 */
+	public FacultyDirectory getFacultyDirectory() {
+		return facultyDirectory;
+	}
 
 	/**
 	 * Make student login
@@ -144,6 +157,28 @@ public class RegistrationManager {
 					String localHashPW = new String(digest.digest());
 					if (s.getPassword().equals(localHashPW)) {
 						currentUser = s;
+						return true;
+					} else {
+						return false;
+					} 
+				}
+				catch (NoSuchAlgorithmException e) {
+					throw new IllegalArgumentException();
+				} catch (NullPointerException e) {
+					throw new IllegalArgumentException("User doesn't exist.");
+				}
+			}
+			
+			Faculty f = facultyDirectory.getFacultyById(id);
+			
+			if (f != null) {  
+				try {
+
+					MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
+					digest.update(password.getBytes());
+					String localHashPW = new String(digest.digest());
+					if (f.getPassword().equals(localHashPW)) {
+						currentUser = f;
 						return true;
 					} else {
 						return false;
