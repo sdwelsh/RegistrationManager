@@ -75,7 +75,7 @@ public class FacultyRecordIOTest {
 	public void testReadFacultyRecords() {
 		try {
 			LinkedList<Faculty> testFacultyValid = FacultyRecordIO.readFacultyRecords("test-files/faculty_records.txt");
-			for (int i = 0; i < validFaculty.length; i++) {
+			for (int i = 0; i < testFacultyValid.size(); i++) {
 				if (!(validFaculty[i].equals(testFacultyValid.get(i).toString()))) {
 					fail("Expected: " + validFaculty[i] + ". Actual: " + testFacultyValid.get(i).toString());
 				}
