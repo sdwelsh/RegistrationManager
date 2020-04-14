@@ -34,7 +34,7 @@ public class FacultyDirectoryTest {
 	/** Test password */
 	private static final String PASSWORD = "pw";
 	/** Test max credits */
-	private static final int MAX_CREDITS = 15;
+	private static final int MAX_CREDITS = 3;
 	
 	/**
 	 * Resets course_records.txt for use in other tests.
@@ -92,7 +92,49 @@ public class FacultyDirectoryTest {
 	 */ 
 	@Test
 	public void testAddFaculty() {
-		fail("Not yet implemented");
+		FacultyDirectory f = new FacultyDirectory();
+		
+		f.loadFacultyFromFile(validTestFile);
+		assertEquals(3, f.getFacultyDirectory().length);
+		
+		f.newFacultyDirectory();
+		assertEquals(0, f.getFacultyDirectory().length);
+		
+		FacultyDirectory f2 = new FacultyDirectory();
+		
+		//Test valid Student
+		f2.addFaculty(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, PASSWORD, MAX_CREDITS);
+		String [][] studentDirectory = f2.getFacultyDirectory();
+		assertEquals(1, studentDirectory.length);
+		assertEquals(FIRST_NAME, studentDirectory[0][0]);
+		assertEquals(LAST_NAME, studentDirectory[0][1]);
+		assertEquals(ID, studentDirectory[0][2]);
+		
+		FacultyDirectory f3 = new FacultyDirectory();
+		try {
+			f3.addFaculty(FIRST_NAME, LAST_NAME, ID, EMAIL, null, PASSWORD, MAX_CREDITS);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals("Invalid password", e.getMessage());
+		}
+		try {
+			f3.addFaculty(FIRST_NAME, LAST_NAME, ID, EMAIL, "", PASSWORD, MAX_CREDITS);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals("Invalid password", e.getMessage());
+		}
+		try {
+			f3.addFaculty(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, null, MAX_CREDITS);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals("Invalid password", e.getMessage());
+		}
+		try {
+			f3.addFaculty(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, "", MAX_CREDITS);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals("Invalid password", e.getMessage());
+		}
 	}
 
 	/**
@@ -100,31 +142,13 @@ public class FacultyDirectoryTest {
 	 */
 	@Test
 	public void testRemoveFaculty() { 
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory#getFacultyDirectory()}.
-	 */
-	@Test
-	public void testGetFacultyDirectory() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory#saveFacultyDirectory(java.lang.String)}.
-	 */
-	@Test
-	public void testSaveFacultyDirectory() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory#getFacultyById(java.lang.String)}.
-	 */
-	@Test
-	public void testGetFacultyById() {
-		fail("Not yet implemented");
+		FacultyDirectory f = new FacultyDirectory();
+		
+		f.loadFacultyFromFile(validTestFile);
+		assertEquals(3, f.getFacultyDirectory().length);
+		
+		f.removeFaculty("fmeadow");
+		assertEquals(2, f.getFacultyDirectory().length);
 	}
 
 }

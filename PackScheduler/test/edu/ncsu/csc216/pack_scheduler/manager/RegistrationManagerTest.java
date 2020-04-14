@@ -93,6 +93,10 @@ public class RegistrationManagerTest {
 			manager.getStudentDirectory().addStudent("stephen", "welsh", "id", "email@ncsu.edu", "pw", "pw", 15);
 			assertTrue(manager.login("id", "pw"));
 			
+			manager.logout();
+			manager.getFacultyDirectory().addFaculty("stephen", "welsh", "faculty", "email@ncsu.edu", "pw", "pw", 3);
+			assertTrue(manager.login("faculty", "pw"));
+			
 		} catch (IOException e) {
 			fail();
 		}
