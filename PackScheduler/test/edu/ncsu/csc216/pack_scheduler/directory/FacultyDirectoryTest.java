@@ -89,7 +89,7 @@ public class FacultyDirectoryTest {
 
 	/**
 	 * Test method for {@link edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory#addFaculty(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)}.
-	 */
+	 */ 
 	@Test
 	public void testAddFaculty() {
 		fail("Not yet implemented");
