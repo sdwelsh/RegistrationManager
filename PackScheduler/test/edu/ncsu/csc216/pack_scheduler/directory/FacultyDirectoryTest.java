@@ -99,7 +99,7 @@ public class FacultyDirectoryTest {
 	 * Test method for {@link edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory#removeFaculty(java.lang.String)}.
 	 */
 	@Test
-	public void testRemoveFaculty() {
+	public void testRemoveFaculty() { 
 		fail("Not yet implemented");
 	}
 
