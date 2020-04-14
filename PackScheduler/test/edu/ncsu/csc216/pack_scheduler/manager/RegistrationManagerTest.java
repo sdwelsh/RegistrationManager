@@ -96,12 +96,19 @@ public class RegistrationManagerTest {
 			manager.logout();
 			manager.getFacultyDirectory().addFaculty("stephen", "welsh", "faculty", "email@ncsu.edu", "pw", "pw", 3);
 			assertTrue(manager.login("faculty", "pw"));
+			manager.logout();
+			assertFalse(manager.login("faculty", "pas"));
 			
 		} catch (IOException e) {
 			fail();
 		}
 			
-		assertFalse(manager.login("john", "smith"));
+		try {
+			assertFalse(manager.login("john", "smith"));
+		} catch(IllegalArgumentException e) {
+			assertEquals("User doesn't exist.", e.getMessage());
+		}
+		
 		
 		// testing invalid login for registrar.
 		manager.logout();

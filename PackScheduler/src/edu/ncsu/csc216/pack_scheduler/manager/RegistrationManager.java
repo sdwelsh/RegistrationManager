@@ -186,9 +186,7 @@ public class RegistrationManager {
 				}
 				catch (NoSuchAlgorithmException e) {
 					throw new IllegalArgumentException();
-				} catch (NullPointerException e) {
-					throw new IllegalArgumentException("User doesn't exist.");
-				}
+				} 
 			}
 			else {
 				throw new IllegalArgumentException("User doesn't exist.");
