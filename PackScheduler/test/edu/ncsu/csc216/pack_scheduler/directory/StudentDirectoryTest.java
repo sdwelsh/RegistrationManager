@@ -20,8 +20,6 @@ public class StudentDirectoryTest {
 	
 	/** Valid course records */
 	private final String validTestFile = "test-files/student_records.txt";
-	/** Invalid course records*/
-	private final String invalidTestFile = "test-files/nosuchfile.txt";
 	/** Test first name */
 	private static final String FIRST_NAME = "Stu";
 	/** Test last name */ 

@@ -122,27 +122,27 @@ public class FacultyRecordIOTest {
 	 * @param expFile The expected version of the file
 	 * @param actFile The actual version of the file
 	 */
-	private void checkFiles(String expFile, String actFile) {
-		try {
-			Scanner expScanner = new Scanner(new FileInputStream(expFile));
-			Scanner actScanner = new Scanner(new FileInputStream(actFile));
-
-			while (expScanner.hasNextLine() && actScanner.hasNextLine()) {
-				String exp = expScanner.nextLine();
-				String act = actScanner.nextLine();
-				assertEquals("Expected: " + exp + " Actual: " + act, exp, act);
-			}
-			if (expScanner.hasNextLine()) {
-				fail("The expected results expect another line " + expScanner.nextLine());
-			}
-			if (actScanner.hasNextLine()) {
-				fail("The actual results has an extra, unexpected line: " + actScanner.nextLine());
-			}
-
-			expScanner.close();
-			actScanner.close();
-		} catch (IOException e) {
-			fail("Error reading files.");
-		}
-	}
+//	private void checkFiles(String expFile, String actFile) {
+//		try {
+//			Scanner expScanner = new Scanner(new FileInputStream(expFile));
+//			Scanner actScanner = new Scanner(new FileInputStream(actFile));
+//
+//			while (expScanner.hasNextLine() && actScanner.hasNextLine()) {
+//				String exp = expScanner.nextLine();
+//				String act = actScanner.nextLine();
+//				assertEquals("Expected: " + exp + " Actual: " + act, exp, act);
+//			}
+//			if (expScanner.hasNextLine()) {
+//				fail("The expected results expect another line " + expScanner.nextLine());
+//			}
+//			if (actScanner.hasNextLine()) {
+//				fail("The actual results has an extra, unexpected line: " + actScanner.nextLine());
+//			}
+//
+//			expScanner.close();
+//			actScanner.close();
+//		} catch (IOException e) {
+//			fail("Error reading files.");
+//		}
+//	}
 }
