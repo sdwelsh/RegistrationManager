@@ -16,18 +16,18 @@ public class Faculty extends User {
 	/** Constant of max amount of courses */
 	public static final int MAX_COURSES = 3;
 	private FacultySchedule facultySchedule;
-	
+
 	/** The Schedule of the students */
 	private Schedule schedule;
 
 	/**
 	 * Constructor used to declare a faculty Object
 	 * 
-	 * @param firstName  Faculty first name
-	 * @param lastName   Faculty last name
-	 * @param id         Faculty id
-	 * @param email      Faculty email
-	 * @param password   Faculty password
+	 * @param firstName Faculty first name
+	 * @param lastName  Faculty last name
+	 * @param id        Faculty id
+	 * @param email     Faculty email
+	 * @param password  Faculty password
 	 * @param maxCourse max amount of courses allowed for faculty
 	 */
 	public Faculty(String firstName, String lastName, String id, String email, String password, int maxCourse) {
@@ -69,14 +69,14 @@ public class Faculty extends User {
 	 *                                  than 1
 	 */
 	public void setMaxCourses(int maxCourses) {
- 
+
 		if (maxCourses > MAX_COURSES || maxCourses < 1) {
 			throw new IllegalArgumentException("Invalid max courses");
 		}
 
 		this.maxCourses = maxCourses;
 	}
-	
+
 	/**
 	 * Hashcode for faculty that calls the super hashing
 	 */
@@ -112,24 +112,26 @@ public class Faculty extends User {
 	 */
 	@Override
 	public String toString() {
-		return getFirstName() + "," + getLastName() + "," + getId() + "," + getEmail() + "," + getPassword() + "," + maxCourses;
+		return getFirstName() + "," + getLastName() + "," + getId() + "," + getEmail() + "," + getPassword() + ","
+				+ maxCourses;
 	}
 
 	/**
 	 * Implementation of the compareTo method
+	 * 
 	 * @param s2 the Faculty object being compared
 	 * @return -1, 0, or 1 based on the result of the compareTo method
 	 */
-	public int compareTo(Faculty s2) { 
-		if(s2 == null) { 
+	public int compareTo(Faculty s2) {
+		if (s2 == null) {
 			throw new NullPointerException();
 		}
 		String objLast = s2.getLastName();
 		String objFirst = s2.getFirstName();
 		String objId = s2.getId();
 		if (objLast.toLowerCase().compareTo(this.getLastName().toLowerCase()) == 0) {
-			if(objFirst.toLowerCase().compareTo(this.getFirstName().toLowerCase()) == 0) {
-				if(objId.toLowerCase().compareTo(this.getId().toLowerCase()) == 0) {
+			if (objFirst.toLowerCase().compareTo(this.getFirstName().toLowerCase()) == 0) {
+				if (objId.toLowerCase().compareTo(this.getId().toLowerCase()) == 0) {
 					return 0;
 				} else {
 					return -1 * (objId.toLowerCase().compareTo(this.getId().toLowerCase()));
@@ -141,22 +143,26 @@ public class Faculty extends User {
 			return -1 * (objLast.toLowerCase().compareTo(this.getLastName().toLowerCase()));
 		}
 	}
-	
+
 	/**
 	 * Returns the faculty current schedule.
+	 * 
 	 * @return the faculty schedule of the faculty.
 	 */
 	public FacultySchedule getSchedule() {
 		return facultySchedule;
 	}
+
 	/**
 	 * returns true if the scheduled courses is greater than the max courses
+	 * 
 	 * @return true if scheduled course is higher than max courses
 	 */
 	public boolean isOverloaded() {
 		if (facultySchedule.getNumScheduledCourses() > maxCourses) {
-		return true;
-	} else {
-		return false;
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
