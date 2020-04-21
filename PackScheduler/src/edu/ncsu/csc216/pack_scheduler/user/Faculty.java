@@ -1,5 +1,6 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
+import edu.ncsu.csc216.pack_scheduler.user.schedule.FacultySchedule;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
 
 /**
@@ -14,6 +15,7 @@ public class Faculty extends User {
 	private int maxCourses;
 	/** Constant of max amount of courses */
 	public static final int MAX_COURSES = 3;
+	private FacultySchedule facultySchedule;
 	
 	/** The Schedule of the students */
 	private Schedule schedule;
@@ -140,29 +142,18 @@ public class Faculty extends User {
 		}
 	}
 	
-//	/**
-//	 * tests if course can be added to the 
-//	 * schedule based off of total credits and max credits
-//	 * @param course the course that is being checked to be added
-//	 * @return true if the course can be added
-//	 * 		   false if the course cannot be added
-//	 */
-//	public boolean canAdd(Course course) {
-//		if(schedule.canAdd(course)) {
-//			int courseCredits = course.getCredits();
-//			int studentCredits = schedule.getScheduleCredits();
-//			if( (courseCredits + studentCredits) <= maxCourses) {
-//				return true; 
-//			} 
-//		}
-//		return false;
-//	}
-//	
 	/**
 	 * Returns the faculty current schedule.
-	 * @return the schedule of the faculty.
+	 * @return the faculty schedule of the faculty.
 	 */
-	public Schedule getSchedule() {
-		return schedule;
+	public FacultySchedule getSchedule() {
+		return facultySchedule;
+	}
+	/**
+	 * returns true if the scheduled courses is greater than the max courses
+	 * @return true if scheduled course is higher than max courses
+	 */
+	public boolean isOverloaded() {
+		return facultySchedule.getNumScheduledCourses() > maxCourses;
 	}
 }
