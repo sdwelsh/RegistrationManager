@@ -119,6 +119,49 @@ public class RegistrationManager {
 	}
 
 	/**
+	 * adds a faculty to a course
+	 * 
+	 * @param course to add a faculty to
+	 * @param faculty to add to the course
+	 * @return true if faculty is added
+	 */
+	public boolean addFacultyToCourse(Course course, Faculty faculty) { 
+		if (currentUser != null && currentUser instanceof Registrar) {
+			faculty.getSchedule().addCourseToSchedule(course);
+            return true;
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	/**
+	 * removes a faculty from a course
+	 * 
+	 * @param course with faculty getting removed
+	 * @param faculty to remove
+	 * @return true if the faculty is removed
+	 */
+	public boolean removeFacultyFromCourse(Course course, Faculty faculty) {
+		if (currentUser != null && currentUser instanceof Registrar) {
+			return faculty.getSchedule().removeCourseFromSchedule(course);
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	/**
+	 * resets the faculty schedule
+	 * 
+	 * @param faculty to reset the schedule for
+	 */
+	public void resetFacultySchedule(Faculty faculty) {
+		if (currentUser != null && currentUser instanceof Registrar) {
+			faculty.getSchedule().resetSchedule();
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+	/**
 	 * Make student login
 	 * @param id id that user input
 	 * @param password password the user input
@@ -205,7 +248,7 @@ public class RegistrationManager {
 	 */
 	public boolean enrollStudentInCourse(Course c) {
 	    if (currentUser == null || !(currentUser instanceof Student)) {
-	        throw new IllegalArgumentException("Illegal Action");
+	        return false;
 	    }
 	    try {
 	        Student s = (Student)currentUser;

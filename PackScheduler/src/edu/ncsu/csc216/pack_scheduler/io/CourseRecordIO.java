@@ -9,6 +9,7 @@ import java.util.*;
 
 import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
+import edu.ncsu.csc216.pack_scheduler.manager.RegistrationManager;
 
 /**
  * Reads Course records from text files.  Writes a set of CourseRecords to a file.
@@ -85,6 +86,10 @@ public class CourseRecordIO {
 			Course course = new Course(name, title, section, credits, instructorId, enrollmentCap, meetingDays, startTime, endTime);
 			
 			lineScan.close();
+			
+			if (RegistrationManager.getInstance().getFacultyDirectory().getFacultyById(instructorId) != null) {
+				RegistrationManager.getInstance().getFacultyDirectory().getFacultyById(instructorId).getSchedule().addCourseToSchedule(course);
+			} 
 			
 	    	return course;
 		}
