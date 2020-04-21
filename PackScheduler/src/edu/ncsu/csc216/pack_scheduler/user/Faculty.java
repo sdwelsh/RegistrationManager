@@ -16,10 +16,7 @@ public class Faculty extends User {
 	/** Constant of max amount of courses */
 	public static final int MAX_COURSES = 3;
 	private FacultySchedule facultySchedule;
-
-	/** The Schedule of the students */
-	private Schedule schedule;
-
+	
 	/**
 	 * Constructor used to declare a faculty Object
 	 * 
@@ -33,7 +30,7 @@ public class Faculty extends User {
 	public Faculty(String firstName, String lastName, String id, String email, String password, int maxCourse) {
 		super(firstName, lastName, id, email, password);
 		setMaxCourses(maxCourse);
-		schedule = new Schedule();
+		facultySchedule = new FacultySchedule(id);
 	}
 
 	/**
@@ -48,7 +45,7 @@ public class Faculty extends User {
 	public Faculty(String firstName, String lastName, String id, String email, String password) {
 		super(firstName, lastName, id, email, password);
 		setMaxCourses(MAX_COURSES);
-		schedule = new Schedule();
+		facultySchedule = new FacultySchedule(id);
 	}
 
 	/**
