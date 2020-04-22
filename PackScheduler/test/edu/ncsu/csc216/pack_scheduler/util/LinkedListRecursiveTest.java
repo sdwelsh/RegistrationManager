@@ -70,6 +70,9 @@ public class LinkedListRecursiveTest {
 		assertEquals(4, (int) test.set(3, 5));
 		assertEquals(5, (int) test.get(3));
 		assertFalse(test.isEmpty());
+		
+		test.set(0, 6);
+		assertEquals(6, (int)test.get(0));
 	}
 
 	/**
