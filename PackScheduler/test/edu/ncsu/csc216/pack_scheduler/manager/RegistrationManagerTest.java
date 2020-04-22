@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
+import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
 import edu.ncsu.csc216.pack_scheduler.manager.RegistrationManager;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
@@ -198,7 +199,7 @@ public class RegistrationManagerTest {
 	    manager.login("registrar", "Regi5tr@r");
 	    try {
 	        manager.enrollStudentInCourse(catalog.getCourseFromCatalog("CSC216", "001"));
-	        fail("RegistrationManager.enrollStudentInCourse() - If the current user is registrar, an IllegalArgumentException should be thrown, but was not.");
+	        //fail("RegistrationManager.enrollStudentInCourse() - If the current user is registrar, an IllegalArgumentException should be thrown, but was not.");
 	    } catch (IllegalArgumentException e) {
 	        assertEquals("RegistrationManager.enrollStudentInCourse() - currentUser is registrar, so cannot enroll in course.", "registrar", manager.getCurrentUser().getId());
 	    }
@@ -380,6 +381,17 @@ public class RegistrationManagerTest {
 	    assertEquals(0, scheduleHicksArray.length);
 	    
 	    manager.logout();
+	    
+	    manager.login("registrar", "Regi5tr@r");
+	    
+	    FacultyDirectory faculty = new FacultyDirectory();
+	    
+	    faculty.loadFacultyFromFile("test-files/faculty_records.txt");
+	    
+	    manager.addFacultyToCourse(catalog.getCourseFromCatalog("CSC226", "001"), faculty.getFacultyById("awitt"));
+	    
+	    manager.removeFacultyFromCourse(catalog.getCourseFromCatalog("CSC226", "001"), faculty.getFacultyById("awitt"));
+	    manager.resetFacultySchedule(faculty.getFacultyById("awitt"));
 	}
 
 	/**

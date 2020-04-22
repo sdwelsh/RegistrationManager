@@ -312,7 +312,7 @@ public class Course extends Activity implements Comparable<Course> {
 			activity = (Course) activity;
 
 			if (((Course) activity).getName().equals(name)) {
-				throw new IllegalArgumentException("You are already enrolled in " + name);
+				return true;
 			}
 		}
 		return false;

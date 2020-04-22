@@ -234,7 +234,7 @@ public class LinkedListRecursive<E> {
 		 */
 		public boolean remove(E element) {
 
-			if (next != null) {
+			if (next.next != null) {
 				if (next.data.equals(element)) {
 					next = next.next;
 					size--;

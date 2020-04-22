@@ -83,7 +83,7 @@ public class CourseRecordIO {
 				endTime = lineScan.nextInt();
 			}
 			
-			Course course = new Course(name, title, section, credits, instructorId, enrollmentCap, meetingDays, startTime, endTime);
+			Course course = new Course(name, title, section, credits, null, enrollmentCap, meetingDays, startTime, endTime);
 			
 			lineScan.close();
 			

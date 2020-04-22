@@ -1,7 +1,6 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
 import edu.ncsu.csc216.pack_scheduler.user.schedule.FacultySchedule;
-import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
 
 /**
  * Faculty code will set data for faculty, set their firstName, lastName, id,
@@ -15,6 +14,7 @@ public class Faculty extends User {
 	private int maxCourses;
 	/** Constant of max amount of courses */
 	public static final int MAX_COURSES = 3;
+	/** Creates a new faculty state*/
 	private FacultySchedule facultySchedule;
 	
 	/**
