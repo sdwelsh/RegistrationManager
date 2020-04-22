@@ -248,7 +248,7 @@ public class RegistrationManager {
 	 */
 	public boolean enrollStudentInCourse(Course c) {
 	    if (currentUser == null || !(currentUser instanceof Student)) {
-	        return false;
+	        throw new IllegalArgumentException();
 	    }
 	    try {
 	        Student s = (Student)currentUser;
@@ -328,6 +328,7 @@ public class RegistrationManager {
 	public void clearData() {
 		courseCatalog.newCourseCatalog();
 		studentDirectory.newStudentDirectory(); 
+		facultyDirectory.newFacultyDirectory();
 	}
 	
 	

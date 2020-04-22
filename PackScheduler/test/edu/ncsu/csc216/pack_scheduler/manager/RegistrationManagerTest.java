@@ -392,6 +392,7 @@ public class RegistrationManagerTest {
 	    
 	    manager.removeFacultyFromCourse(catalog.getCourseFromCatalog("CSC226", "001"), faculty.getFacultyById("awitt"));
 	    manager.resetFacultySchedule(faculty.getFacultyById("awitt"));
+	    manager.logout();
 	}
 
 	/**
