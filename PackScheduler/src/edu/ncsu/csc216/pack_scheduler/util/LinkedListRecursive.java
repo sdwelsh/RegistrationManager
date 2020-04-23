@@ -67,8 +67,11 @@ public class LinkedListRecursive<E> {
 			throw new NullPointerException();
 		} else if(index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
-		}
+		} 
 		if (index == 0) {
+			if(front != null && front.data != null && front.data.equals(element)) {
+				throw new IllegalArgumentException();
+			}
 			front = new ListNode(element, front);
 			size++;
 		} else {
@@ -196,12 +199,18 @@ public class LinkedListRecursive<E> {
 		 */
 		public void add(int index, E element) {
 			if (index == 0) {
+				if(data != null && data.equals(element)) {
+					throw new IllegalArgumentException();
+				}
 				ListNode current = this;
 				this.next = new ListNode(current.data, current);
 				this.data = element;
 				size++;
 			} else {
 				index--;
+				if(data.equals(element)) {
+					throw new IllegalArgumentException();
+				}
 				next.add(index, element);
 			}
 		}
