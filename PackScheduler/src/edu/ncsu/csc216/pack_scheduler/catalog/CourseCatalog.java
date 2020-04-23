@@ -82,9 +82,7 @@ public class CourseCatalog {
 				try {
 					courseCat.isDuplicate(course);
 				} catch (IllegalArgumentException e) {
-					if(courseCat.getSection().equals(course.getSection())) {
-						return false;
-					}
+					return false;
 				}
 				if (courseCat.equals(course)) {
 					return false;
