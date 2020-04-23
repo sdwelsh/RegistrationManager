@@ -46,10 +46,7 @@ public class CourseCatalog {
 	 */
 	public void loadCoursesFromFile(String fileName) {
 		try {
-			SortedList<Course> array = CourseRecordIO.readCourseRecords(fileName);
-			for (int i = 0; i < array.size(); i++) {
-				courseDirectory.add(array.get(i));
-			}
+			courseDirectory = CourseRecordIO.readCourseRecords(fileName);
 
 		} catch (FileNotFoundException e) {
 			throw new IllegalArgumentException();
