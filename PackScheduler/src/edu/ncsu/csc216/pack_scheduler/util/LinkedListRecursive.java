@@ -75,7 +75,7 @@ public class LinkedListRecursive<E> {
 			front = new ListNode(element, front);
 			size++;
 		} else {
-			front.add(index--, element);
+			front.add(index, element);
 		}
 	}
 
