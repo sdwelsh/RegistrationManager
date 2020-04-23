@@ -79,7 +79,11 @@ public class LinkedListRecursiveTest {
 		test2.add(0, "apple");
 		test2.add(0, "orange");
 		test2.add(1, "banana");
+		test2.add(3, "kiwi");
+		assertEquals("orange", test2.get(0));
+		assertEquals("banana", test2.get(1));
 		assertEquals("apple", test2.get(2));
+		assertEquals("kiwi", test2.get(3));
 		
 	}
 
