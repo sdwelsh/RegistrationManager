@@ -196,8 +196,9 @@ public class LinkedListRecursive<E> {
 		 */
 		public void add(int index, E element) {
 			if (index == 0) {
+				ListNode current = this;
+				this.next = new ListNode(current.data, current);
 				this.data = element;
-				this.next = new ListNode(null, null);
 				size++;
 			} else {
 				index--;

@@ -73,6 +73,14 @@ public class LinkedListRecursiveTest {
 		
 		test.set(0, 6);
 		assertEquals(6, (int)test.get(0));
+		
+		LinkedListRecursive<String> test2 = new LinkedListRecursive<String>();
+		
+		test2.add(0, "apple");
+		test2.add(0, "orange");
+		test2.add(1, "banana");
+		assertEquals("apple", test2.get(2));
+		
 	}
 
 	/**
