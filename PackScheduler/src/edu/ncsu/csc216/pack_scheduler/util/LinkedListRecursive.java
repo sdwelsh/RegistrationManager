@@ -67,7 +67,9 @@ public class LinkedListRecursive<E> {
 			throw new NullPointerException();
 		} else if(index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
-		} 
+		} if(contains(element)) {
+			throw new IllegalArgumentException();
+		}
 		if (index == 0) {
 			if(front != null && front.data != null && front.data.equals(element)) {
 				throw new IllegalArgumentException();
