@@ -103,7 +103,7 @@ public class LinkedListRecursive<E> {
 	 * @return true if removed otherwise false
 	 */
 	public boolean remove(E element) {
-		if (front.data.equals(element)) {
+		if (front.data != null && front.data.equals(element)) {
 			front = front.next;
 			size--;
 			return true;
