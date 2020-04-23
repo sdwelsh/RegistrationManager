@@ -146,6 +146,9 @@ public class LinkedListRecursive<E> {
 			throw new IndexOutOfBoundsException();
 		}
 		if (index == 0) {
+			if(front.data.equals(element)) {
+				throw new IllegalArgumentException();
+			}
 			E returnElement = front.data;
 			front.data = element;
 			return returnElement;
@@ -285,11 +288,17 @@ public class LinkedListRecursive<E> {
 				throw new NullPointerException();
 			}
 			if (index == 0) {
+				if(data.equals(element)) {
+					throw new IllegalArgumentException();
+				}
 				E elementToReturn = data;
 				data = element;
 				return elementToReturn;
 			} else {
 				index--;
+				if(data.equals(element)) {
+					throw new IllegalArgumentException();
+				}
 				return next.set(index, element);
 			}
 		}
