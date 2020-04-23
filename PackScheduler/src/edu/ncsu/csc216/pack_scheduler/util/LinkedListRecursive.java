@@ -63,6 +63,11 @@ public class LinkedListRecursive<E> {
 	 * @param element element to add
 	 */
 	public void add(int index, E element) {
+		if(element == null) {
+			throw new NullPointerException();
+		} else if(index < 0 || index > size) {
+			throw new IndexOutOfBoundsException();
+		}
 		if (index == 0) {
 			front = new ListNode(element, front);
 			size++;
@@ -78,6 +83,9 @@ public class LinkedListRecursive<E> {
 	 * @return element at the index value
 	 */
 	public E get(int index) {
+		if(index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
 		if (index == 0) {
 			return front.data;
 		} else {
@@ -108,6 +116,9 @@ public class LinkedListRecursive<E> {
 	 * @return element at the index that was removed
 	 */
 	public E remove(int index) {
+		if(index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
 		if (index == 0) {
 			E remmoveElement = front.data;
 			front = front.next;
@@ -126,6 +137,11 @@ public class LinkedListRecursive<E> {
 	 * @return the previous element
 	 */
 	public E set(int index, E element) {
+		if(index == 0 && size == 0) {
+			throw new IndexOutOfBoundsException();
+		} else if(index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
 		if (index == 0) {
 			E returnElement = front.data;
 			front.data = element;
