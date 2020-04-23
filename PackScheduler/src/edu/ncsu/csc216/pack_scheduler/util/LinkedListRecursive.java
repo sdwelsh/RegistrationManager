@@ -261,11 +261,11 @@ public class LinkedListRecursive<E> {
 		public boolean remove(E element) {
 
 			if (next != null && next.next != null) {
-				if (next.data.equals(element)) {
+				if (next.data != null && next.data.equals(element)) {
 					next = next.next;
 					size--;
 					return true;
-				} else {
+				} else if (next.data != null){
 					next.remove(element);
 				}
 			}
