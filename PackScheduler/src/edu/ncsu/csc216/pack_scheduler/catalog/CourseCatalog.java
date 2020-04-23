@@ -79,9 +79,9 @@ public class CourseCatalog {
 
 			for (int i = 0; i < courseDirectory.size(); i++) {
 				Course courseCat = courseDirectory.get(i);
-				if(courseCat.equals(course)) {
+				if(courseCat.compareTo(course) == 0) {
 					return false;
-			}
+				}
 			}		
 			courseDirectory.add(course);
 			return true;
