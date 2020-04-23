@@ -187,4 +187,14 @@ public class CourseCatalogTest {
 			fail("Error reading files.");
 		}
 	}
+	
+//	/**
+//	 * Loads students from file
+//	 */
+//	@Test
+//	public void loadStudentsFromFile() {
+//		CourseCatalog cc = new CourseCatalog();
+//		cc.loadCoursesFromFile("test-files/course_records.txt");
+//		assertEquals(9, cc.getCourseCatalog().length);
+//	}
 }

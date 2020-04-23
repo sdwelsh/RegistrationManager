@@ -79,9 +79,7 @@ public class CourseCatalog {
 
 			for (int i = 0; i < courseDirectory.size(); i++) {
 				Course courseCat = courseDirectory.get(i);
-				try {
-					courseCat.isDuplicate(course);
-				} catch (IllegalArgumentException e) {
+				if(courseCat.isDuplicate(course)) {
 					return false;
 				}
 				if (courseCat.equals(course)) {
