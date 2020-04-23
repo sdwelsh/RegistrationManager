@@ -93,6 +93,7 @@ public class LinkedListRecursiveTest {
 		assertEquals(1, (int) test.get(0));
 		assertEquals(2, (int) test.get(1));
 		assertEquals(4, (int) test.get(2));
+		test.remove(0);
 		
 		
 		LinkedListRecursive<String> test2 = new LinkedListRecursive<String>();
