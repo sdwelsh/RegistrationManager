@@ -79,12 +79,9 @@ public class CourseCatalog {
 
 			for (int i = 0; i < courseDirectory.size(); i++) {
 				Course courseCat = courseDirectory.get(i);
-				if(courseCat.isDuplicate(course)) {
+				if(courseCat.equals(course)) {
 					return false;
-				}
-//				if(courseCat.equals(course)) {
-//					return false;
-//				}
+			}
 			}		
 			courseDirectory.add(course);
 			return true;
