@@ -82,9 +82,9 @@ public class CourseCatalog {
 				if(courseCat.isDuplicate(course)) {
 					return false;
 				}
-				if (courseCat.equals(course)) {
-					return false;
-				}
+//				if(courseCat.equals(course)) {
+//					return false;
+//				}
 			}		
 			courseDirectory.add(course);
 			return true;
