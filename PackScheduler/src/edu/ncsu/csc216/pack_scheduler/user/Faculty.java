@@ -156,10 +156,6 @@ public class Faculty extends User {
 	 * @return true if scheduled course is higher than max courses
 	 */
 	public boolean isOverloaded() {
-		if (facultySchedule.getNumScheduledCourses() > maxCourses) {
-			return true;
-		} else {
-			return false;
-		}
+		return facultySchedule.getNumScheduledCourses() > maxCourses;
 	}
 }
