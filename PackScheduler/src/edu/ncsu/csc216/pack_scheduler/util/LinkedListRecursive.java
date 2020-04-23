@@ -279,6 +279,11 @@ public class LinkedListRecursive<E> {
 		 * @param element the previous element
 		 */
 		public E set(int index, E element) {
+			if(index < 0 || index > size) {
+				throw new IndexOutOfBoundsException();
+			} else if(element == null) {
+				throw new NullPointerException();
+			}
 			if (index == 0) {
 				E elementToReturn = data;
 				data = element;
